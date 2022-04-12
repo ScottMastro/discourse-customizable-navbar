@@ -5,24 +5,23 @@ Style is purposely bland and meant to be overridden. Here is an example of how t
 
 ```
 .e4-container {
-  background-image: linear-gradient($e4-color-gradient-medium, $e4-color-gradient-light, $e4-color-gradient-medium);
-  border: 1px solid $e4-color-hardborder;
+  background-image: linear-gradient(#e6e6e6, #ffffff, #e6e6e6);
+  border: 1px solid #645f6e;
   border-radius: 10px;
 }
 
 .e4-button {
   > li {
     > a {
-      background-image: linear-gradient($e4-color-gradient-medium, $e4-color-gradient-dark);
-      color: $e4-color-darkred;
-      border: 1px solid $e4-color-softborder !important;
+      background-image: linear-gradient(#e6e6e6, #c9c9c9);
+      color: #a30000;
+      border: 1px solid #868686 !important;
       border-radius: 10px;
       text-transform: uppercase;
-      box-sizing: border-box;
 
       &:hover {
-        border: 1px solid $e4-color-hardborder !important;
-        color: $e4-color-darkred !important;
+        border: 1px solid #645f6e !important;
+        color: #a30000 !important;
       }
     }
   }
