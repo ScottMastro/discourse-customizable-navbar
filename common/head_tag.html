@@ -1,0 +1,40 @@
+<script type="text/discourse-plugin" version="0.8">
+ const h = require("virtual-dom").h; 
+ function isImage(url) {
+    return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+  }
+
+  var strName = settings.navbar_name;
+  var strURL = settings.navbar_location;
+  
+  var names = strName.split('|');
+  var url = strURL.split('|');
+
+  function createNavbarElement(navName, navURL) {
+      
+    if (isImage(navName)){
+      return h('li', 
+        h("a", { href: navURL }, 
+          h("img.e4-button-image", {src: navName})));
+    }
+    
+    return h('li', h("a", { href: navURL }, navName));
+    }
+  
+  api.createWidget("e4-navbar", {
+    tagName: "div.e4-container.e4-button",
+
+    html() {
+      const contents = [];
+      for (let i = 0; i < names.length; i++) {
+        contents.push(createNavbarElement(names[i], url[i]))
+      } 
+      return contents;
+    }
+  });
+</script>
+
+<script type="text/x-handlebars" data-template-name="/connectors/below-site-header/navbar">
+  {{mount-widget widget="e4-navbar"}}
+</script>
+
