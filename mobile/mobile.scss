@@ -1,7 +1,18 @@
 .e4-button {
   >li{
+      margin-right: 0.1em !important;
+      margin-left: 0.1em !important;
+      font-size: small !important;
+    
     > a {
       padding: 2px !important;
       }
    }
 }
+
+
+.e4-button > li {
+  display: flex;
+  margin-right: 0.1em;
+  margin-left: 0.1em;
+  font-size: small;
