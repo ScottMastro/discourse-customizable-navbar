@@ -1,9 +1,9 @@
 navbar_name:
-  default: "Home|New Topics|Search|https://i.imgur.com/WXwuBvs.png|Users"
+  default: "Home|New Topics|Search|Users"
   type: list
   description: name (or image) for navigation bar
 
 navbar_location:
-  default: "/categories|/latest|/search|https://ebay.us/m6Zlvp|/u"
+  default: "/categories|/latest|/search|/u"
   type: list
   description: URLs for navigation bar 
