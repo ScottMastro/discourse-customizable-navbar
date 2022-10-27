@@ -23,8 +23,10 @@
   scrollbar-width: none;  /* Firefox */
   
   > ul {
-  > li {
     display: flex;
+
+  > li {
+
     margin-right: 0.25em;
     margin-left: 0.25em;
 
