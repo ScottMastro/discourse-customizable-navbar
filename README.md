@@ -11,6 +11,7 @@ Style is purposely bland and meant to be overridden. Here is an example of how t
 }
 
 .e4-button {
+  > ul {
   > li {
     > a {
       background-image: linear-gradient(#e6e6e6, #c9c9c9);
@@ -24,6 +25,7 @@ Style is purposely bland and meant to be overridden. Here is an example of how t
         color: #a30000 !important;
       }
     }
+  }
   }
 }
 ```
