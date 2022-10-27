@@ -26,10 +26,11 @@
 
     html() {
       const contents = [];
+ 
       for (let i = 0; i < names.length; i++) {
         contents.push(createNavbarElement(names[i], url[i]))
       } 
-      return contents;
+      return h('ul', {}, contents);
     }
   });
 </script>
