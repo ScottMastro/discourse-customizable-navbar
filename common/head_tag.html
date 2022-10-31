@@ -14,8 +14,9 @@
       
     if (isImage(navName)){
       return h('li', 
-        h("a", { href: navURL }, 
-          h("img.e4-button-image", {src: navName})));
+        h('div', {style: "width: 3em"}, 
+         h("a", { href: navURL }, 
+          h("img.e4-button-image", {src: navName}))));
     }
     
     return h('li', h("a", { href: navURL }, navName));
