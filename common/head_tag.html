@@ -10,7 +10,6 @@
   var names = strName.split('|');
   var url = strURL.split('|');
   var is_admin = Discourse.User.current().admin;
-  console.log(is_admin);
   
   function createNavbarElement(navName, navURL) {
       
@@ -30,6 +29,9 @@
       const contents = [];
  
       for (let i = 0; i < names.length; i++) {
+      
+        if (names[i].endsWith('/admin') && !is_admin) { continue; }
+      
         contents.push(createNavbarElement(names[i], url[i]))
       } 
       return h('ul', {}, contents);
