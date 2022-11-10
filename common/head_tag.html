@@ -30,7 +30,7 @@
  
       for (let i = 0; i < names.length; i++) {
       
-        if (names[i].endsWith('/admin') && !is_admin) { continue; }
+        if (url[i].endsWith('/admin') && !is_admin) { continue; }
       
         contents.push(createNavbarElement(names[i], url[i]))
       } 
