@@ -9,7 +9,8 @@
   
   var names = strName.split('|');
   var url = strURL.split('|');
-
+  console.log(Discourse.User.current());
+  
   function createNavbarElement(navName, navURL) {
       
     if (isImage(navName)){
