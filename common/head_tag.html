@@ -9,13 +9,19 @@
   
   var names = strName.split('|');
   var url = strURL.split('|');
-  var is_admin = Discourse.User.current().admin;
+  var is_admin = false;
+  
+  try {
+    is_admin = Discourse.User.current().admin;
+  } catch (error) {
+    console.error(error);
+  }  
   
   function createNavbarElement(navName, navURL) {
       
     if (isImage(navName)){
-      return h('li', 
-        h("a", { href: navURL }, 
+      return h('li',
+        h("a", { href: navURL },
           h("img.e4-button-image", {src: navName})));
     }
     
@@ -33,7 +39,7 @@
         if (url[i].endsWith('/admin') && !is_admin) { continue; }
       
         contents.push(createNavbarElement(names[i], url[i]))
-      } 
+      }
       return h('ul', {}, contents);
     }
   });
