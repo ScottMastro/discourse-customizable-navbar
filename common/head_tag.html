@@ -8,18 +8,15 @@
    var strName = settings.navbar_name;
    var strURL = settings.navbar_location;
   
-   function refreshCounts() {
-     var totalUnread = topicTrackingState.countUnread();
-     var totalNew = topicTrackingState.countNew();
-   }
-  
+   var totalUnread = topicTrackingState.countUnread();
+   var totalNew = topicTrackingState.countNew();
+   
    this.callbackId = topicTrackingState.onStateChange(() => {
-    console.log("wwooooow");
+    totalUnread = topicTrackingState.countUnread();
+    totalNew = topicTrackingState.countNew();
+    console.log(totalNew)
    });
-  
-  var totalUnread = topicTrackingState.countUnread();
-  var totalNew = topicTrackingState.countNew();
-  
+
    var names = strName.split('|');
    var url = strURL.split('|');
    var is_admin = false;
