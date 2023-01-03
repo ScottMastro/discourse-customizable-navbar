@@ -55,3 +55,14 @@
   width: 3em;
   object-fit: contain;
 }
+
+.notification-bubble{
+  position: absolute;
+  top: -8px;
+  right: -7px;
+  padding: 2px 5px 2px 6px;
+  background-color: var(--tertiary);
+  color: var(--primary);
+  font-size: 0.65em;
+  border-radius: 20%;
+}

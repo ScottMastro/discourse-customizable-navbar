@@ -1,57 +1,76 @@
 <script type="text/discourse-plugin" version="0.8">
-
- var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
- const h = require("virtual-dom").h; 
- function isImage(url) {
-    return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+  var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
+  const h = require("virtual-dom").h; 
+  function isImage(url) {
+     return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+   }
+  
+   var strName = settings.navbar_name;
+   var strURL = settings.navbar_location;
+   console.log(topicTrackingState);
+  
+   console.log(topicTrackingState.countUnread());
+  
+   refreshCounts() {
+     var totalUnread = this.topicTrackingState.countUnread();
+     var totalNew = this.topicTrackingState.countNew();
+   }
+  
+   this.callbackId = topicTrackingState.onStateChange(() => {
+  
+   });
   }
-
-  var strName = settings.navbar_name;
-  var strURL = settings.navbar_location;
-  console.log(topicTrackingState);
-
-  console.log(topicTrackingState.countUnread());
-
   
-  var names = strName.split('|');
-  var url = strURL.split('|');
-  var is_admin = false;
+  var totalUnread = this.topicTrackingState.countUnread();
+  var totalNew = this.topicTrackingState.countNew();
   
-  try {
-    is_admin = Discourse.User.current().admin;
-  } catch (error) {
-    console.error(error);
-  }  
-  
-  function createNavbarElement(navName, navURL) {
-      
-    if (isImage(navName)){
-      return h('li',
-        h("a", { href: navURL },
-          h("img.e4-button-image", {src: navName})));
-    }
+   var names = strName.split('|');
+   var url = strURL.split('|');
+   var is_admin = false;
+   
+   try {
+     is_admin = Discourse.User.current().admin;
+   } catch (error) {
+     console.error(error);
+   }  
+   
+   function createNavbarElement(navName, navURL) {
     
-    return h('li', h("a", { href: navURL }, navName));
+    if (url[i].endsWith('/new') && totalNew > 0) { 
+      return h('li', [h('a', { href: navURL }, navName),
+      h("span.notifcation-bubble", totalNew)]);
     }
+    if (url[i].endsWith('/unread') && totalUnread > 0) { 
+      return h('li', [h('a', { href: navURL }, navName),
+      h("span.notifcation-bubble", totalUnread)]);
+    }
+
+     if (isImage(navName)){
+       return h('li',
+         h("a", { href: navURL },
+           h("img.e4-button-image", {src: navName})));
+     }
+     
+     return h('li', h('a', { href: navURL }, navName));
+     }
+   
+   api.createWidget("e4-navbar", {
+     tagName: "div.e4-container.e4-button",
   
-  api.createWidget("e4-navbar", {
-    tagName: "div.e4-container.e4-button",
+     html() {
+       const contents = [];
+  
+       for (let i = 0; i < names.length; i++) {
+       
+         if (url[i].endsWith('/admin') && !is_admin) { continue; }
+       
+         contents.push(createNavbarElement(names[i], url[i]))
 
-    html() {
-      const contents = [];
- 
-      for (let i = 0; i < names.length; i++) {
-      
-        if (url[i].endsWith('/admin') && !is_admin) { continue; }
-      
-        contents.push(createNavbarElement(names[i], url[i]))
-      }
-      return h('ul', {}, contents);
-    }
-  });
+       }
+       return h('ul', {}, contents);
+     }
+   });
 </script>
-
 <script type="text/x-handlebars" data-template-name="/connectors/above-main-container/navbar">
   {{mount-widget widget="e4-navbar"}}
 </script>
-
