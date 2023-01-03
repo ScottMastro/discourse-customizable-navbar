@@ -46,17 +46,13 @@
        });  
 
        const contents = [];
-  
-       var notif = 0;
-       if (navURL.endsWith('/new') ) {
-         notif = topicTrackingState.countNew();
-       }
-       if (navURL.endsWith('/unread') ) {
-         notif = topicTrackingState.countUnread();
-       }
 
        for (let i = 0; i < names.length; i++) {
        
+        var notif = 0;
+        if (url[i].endsWith('/new') ) {  notif = topicTrackingState.countNew(); }
+        if (url[i].endsWith('/unread') ) { notif = topicTrackingState.countUnread(); }
+
          if (url[i].endsWith('/admin') && !is_admin) { continue; }
          contents.push(createNavbarElement(names[i], url[i], notif))
 
