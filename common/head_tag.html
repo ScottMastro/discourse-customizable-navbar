@@ -1,5 +1,13 @@
 <script type="text/discourse-plugin" version="0.8">
+
+  api.createWidget("e4-navbar", {
+    tagName: "div.e4-container.e4-button",
+
+    html() {
+
   const h = require("virtual-dom").h; 
+
+  
   function isImage(url) {
      return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
    }
@@ -33,10 +41,6 @@
      return h('li', h('a', { href: navURL }, navName));
    }
    
-   api.createWidget("e4-navbar", {
-     tagName: "div.e4-container.e4-button",
-
-     html() {
   
       var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
    
