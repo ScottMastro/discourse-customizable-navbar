@@ -27,7 +27,7 @@
    
    function createNavbarElement(navName, navURL, notif) {
 
-    if (notif > -1){
+    if (notif > 0){
       return h('li', [h('a', { href: navURL }, navName),
       h("div.notification-bubble", {}, notif)]);
     }
