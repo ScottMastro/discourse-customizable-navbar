@@ -14,23 +14,8 @@
    this.callbackId = topicTrackingState.onStateChange(() => {
     totalUnread = topicTrackingState.countUnread();
     totalNew = topicTrackingState.countNew();
-
-    api.createWidget("e4-navbar", {
-      tagName: "div.e4-container.e4-button",
-   
-      html() {
-        const contents = [];
-   
-        for (let i = 0; i < names.length; i++) {
-        
-          if (url[i].endsWith('/admin') && !is_admin) { continue; }
-          contents.push(createNavbarElement(names[i], url[i]))
- 
-        }
-        return h('ul', {}, contents);
-      }
-    });
-  });
+    console.log(totalNew)
+   });
 
    var names = strName.split('|');
    var url = strURL.split('|');
@@ -40,7 +25,7 @@
      is_admin = Discourse.User.current().admin;
    } catch (error) {
      console.error(error);
-   }  
+   }
    
    function createNavbarElement(navName, navURL) {
     
@@ -48,7 +33,7 @@
     if (navURL.endsWith('/new') ) {
       notif = totalNew;
     }
-    if (navURL.endsWith('/unread') ) { 
+    if (navURL.endsWith('/unread') ) {
       notif = totalUnread;
     }
 
@@ -69,6 +54,12 @@
    api.createWidget("e4-navbar", {
      tagName: "div.e4-container.e4-button",
   
+     this.callbackId = topicTrackingState.onStateChange(() => {
+      totalUnread = topicTrackingState.countUnread();
+      totalNew = topicTrackingState.countNew();
+      this.scheduleRerender();
+     });
+
      html() {
        const contents = [];
   
