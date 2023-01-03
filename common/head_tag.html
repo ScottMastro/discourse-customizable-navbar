@@ -35,11 +35,11 @@
    
    function createNavbarElement(navName, navURL) {
     
-    if (url[i].endsWith('/new') && totalNew > 0) { 
+    if (navURL.endsWith('/new') && totalNew > 0) { 
       return h('li', [h('a', { href: navURL }, navName),
       h("span.notifcation-bubble", totalNew)]);
     }
-    if (url[i].endsWith('/unread') && totalUnread > 0) { 
+    if (navURL.endsWith('/unread') && totalUnread > 0) { 
       return h('li', [h('a', { href: navURL }, navName),
       h("span.notifcation-bubble", totalUnread)]);
     }
