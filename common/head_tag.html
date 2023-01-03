@@ -53,14 +53,15 @@
    
    api.createWidget("e4-navbar", {
      tagName: "div.e4-container.e4-button",
-  
-     topicTrackingState.onStateChange(() => {
-      totalUnread = topicTrackingState.countUnread();
-      totalNew = topicTrackingState.countNew();
-      scheduleRerender();
-     });
 
      html() {
+  
+      topicTrackingState.onStateChange(() => {
+        totalUnread = topicTrackingState.countUnread();
+        totalNew = topicTrackingState.countNew();
+        scheduleRerender();
+       });  
+
        const contents = [];
   
        for (let i = 0; i < names.length; i++) {
