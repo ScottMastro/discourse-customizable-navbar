@@ -32,11 +32,11 @@
    
    function createNavbarElement(navName, navURL) {
     
-    if (navURL.endsWith('/new') && totalNew > 0) {
+    if (navURL.endsWith('/new') ) {
       return h('li', [h('a', { href: navURL }, navName),
       h("div", totalNew)]);
     }
-    if (navURL.endsWith('/unread') && totalUnread > 0) { 
+    if (navURL.endsWith('/unread')) { 
       return h('li', [h('a', { href: navURL }, navName),
       h("div", totalUnread)]);
     }
