@@ -17,15 +17,7 @@
      console.error(error);
    }
    
-   function createNavbarElement(navName, navURL) {
-    
-    var notif = 0;
-    if (navURL.endsWith('/new') ) {
-      notif = totalNew;
-    }
-    if (navURL.endsWith('/unread') ) {
-      notif = totalUnread;
-    }
+   function createNavbarElement(navName, navURL, notif) {
 
     if (notif > -1){
       return h('li', [h('a', { href: navURL }, navName),
@@ -47,9 +39,6 @@
      html() {
   
       var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
-
-      var totalUnread = topicTrackingState.countUnread();
-      var totalNew = topicTrackingState.countNew();
    
       topicTrackingState.onStateChange(() => {
         console.log("whoaa");
@@ -58,10 +47,18 @@
 
        const contents = [];
   
+       var notif = 0;
+       if (navURL.endsWith('/new') ) {
+         notif = topicTrackingState.countNew();
+       }
+       if (navURL.endsWith('/unread') ) {
+         notif = topicTrackingState.countUnread();
+       }
+
        for (let i = 0; i < names.length; i++) {
        
          if (url[i].endsWith('/admin') && !is_admin) { continue; }
-         contents.push(createNavbarElement(names[i], url[i]))
+         contents.push(createNavbarElement(names[i], url[i], notif))
 
        }
        return h('ul', {}, contents);
