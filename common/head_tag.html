@@ -11,7 +11,7 @@
   
    console.log(topicTrackingState.countUnread());
   
-   refreshCounts() {
+   function refreshCounts() {
      var totalUnread = this.topicTrackingState.countUnread();
      var totalNew = this.topicTrackingState.countNew();
    }
@@ -19,7 +19,6 @@
    this.callbackId = topicTrackingState.onStateChange(() => {
   
    });
-  }
   
   var totalUnread = this.topicTrackingState.countUnread();
   var totalNew = this.topicTrackingState.countNew();
