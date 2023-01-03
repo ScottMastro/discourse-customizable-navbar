@@ -14,8 +14,23 @@
    this.callbackId = topicTrackingState.onStateChange(() => {
     totalUnread = topicTrackingState.countUnread();
     totalNew = topicTrackingState.countNew();
-    console.log(totalNew)
-   });
+
+    api.createWidget("e4-navbar", {
+      tagName: "div.e4-container.e4-button",
+   
+      html() {
+        const contents = [];
+   
+        for (let i = 0; i < names.length; i++) {
+        
+          if (url[i].endsWith('/admin') && !is_admin) { continue; }
+          contents.push(createNavbarElement(names[i], url[i]))
+ 
+        }
+        return h('ul', {}, contents);
+      }
+    });
+  });
 
    var names = strName.split('|');
    var url = strURL.split('|');
@@ -37,7 +52,7 @@
       notif = totalUnread;
     }
 
-    if (notif > 0){
+    if (notif > -1){
       return h('li', [h('a', { href: navURL }, navName),
       h("div.notification-bubble", {}, notif)]);
     }
