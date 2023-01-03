@@ -34,11 +34,11 @@
     
     if (navURL.endsWith('/new') ) {
       return h('li', [h('a', { href: navURL }, navName),
-      h("div", 12)]);
+      h("div", {}, 12)]);
     }
     if (navURL.endsWith('/unread') ) { 
       return h('li', [h('a', { href: navURL }, navName),
-      h("div", 9)]);
+      h("div", {}, "9")]);
     }
 
      if (isImage(navName)){
