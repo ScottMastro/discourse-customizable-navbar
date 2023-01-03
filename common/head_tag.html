@@ -1,5 +1,4 @@
 <script type="text/discourse-plugin" version="0.8">
-  var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
   const h = require("virtual-dom").h; 
   function isImage(url) {
      return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
@@ -7,9 +6,6 @@
   
    var strName = settings.navbar_name;
    var strURL = settings.navbar_location;
-  
-   var totalUnread = topicTrackingState.countUnread();
-   var totalNew = topicTrackingState.countNew();
    
    this.callbackId = topicTrackingState.onStateChange(() => {
     totalUnread = topicTrackingState.countUnread();
@@ -56,9 +52,13 @@
 
      html() {
   
+      var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
+
+      var totalUnread = topicTrackingState.countUnread();
+      var totalNew = topicTrackingState.countNew();
+   
       topicTrackingState.onStateChange(() => {
-        totalUnread = topicTrackingState.countUnread();
-        totalNew = topicTrackingState.countNew();
+        console.log("whoaa");
         scheduleRerender();
        });  
 
