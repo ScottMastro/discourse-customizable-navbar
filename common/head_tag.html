@@ -5,6 +5,14 @@
      return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
    }
   
+   var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
+
+   var totalUnread = topicTrackingState.countUnread();
+   var totalNew = topicTrackingState.countNew();
+ 
+   var arguments = {"unread" : totalUnread, "new" : totalNew}
+   console.log(arguments)
+
    var strName = settings.navbar_name;
    var strURL = settings.navbar_location;
      
@@ -67,12 +75,5 @@
 </script>
 <script type="text/x-handlebars" data-template-name="/connectors/above-main-container/navbar">
 
-  var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
-
-  var totalUnread = topicTrackingState.countUnread();
-  var totalNew = topicTrackingState.countNew();
-
-  arguments = {"unread" : totalUnread, "new" : totalNew}
-  console.log(arguments)
   {{mount-widget widget="e4-navbar" args=arguments}}
 </script>
