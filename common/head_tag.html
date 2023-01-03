@@ -32,11 +32,13 @@
    
    function createNavbarElement(navName, navURL) {
     
-    if (navURL.endsWith('/new') && totalNew > 0) { 
-      return h('li', h('a', { href: navURL }, navName));
+    if (navURL.endsWith('/new') && totalNew > 0) {
+      return h('li', h('a', { href: navURL }, navName),
+      h("span.notifcation-bubble", totalNew));
     }
     if (navURL.endsWith('/unread') && totalUnread > 0) { 
-      return h('li', h('a', { href: navURL }, navName));
+      return h('li', h('a', { href: navURL }, navName),
+      h("span.notifcation-bubble", totalUnread));
     }
 
      if (isImage(navName)){
