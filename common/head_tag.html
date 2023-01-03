@@ -29,13 +29,17 @@
    
    function createNavbarElement(navName, navURL) {
     
+    var notif = 0;
     if (navURL.endsWith('/new') ) {
-      return h('li', [h('a', { href: navURL }, navName),
-      h("div.notification-bubble", {}, totalNew)]);
+      notif = totalNew;
     }
     if (navURL.endsWith('/unread') ) { 
+      notif = totalUnread;
+    }
+
+    if (notif > 0){
       return h('li', [h('a', { href: navURL }, navName),
-      h("div.notification-bubble", {}, totalUnread)]);
+      h("div.notification-bubble", {}, notif)]);
     }
 
     if (isImage(navName)){
@@ -43,7 +47,7 @@
         h("a", { href: navURL },
           h("img.e4-button-image", {src: navName})));
     }
-     
+
      return h('li', h('a', { href: navURL }, navName));
    }
    
