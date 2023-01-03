@@ -7,10 +7,7 @@
   
    var strName = settings.navbar_name;
    var strURL = settings.navbar_location;
-  
-   var totalUnread = topicTrackingState.countUnread();
-   var totalNew = topicTrackingState.countNew();
-   
+     
    this.callbackId = topicTrackingState.onStateChange(() => {
     totalUnread = topicTrackingState.countUnread();
     totalNew = topicTrackingState.countNew();
@@ -27,25 +24,22 @@
      console.error(error);
    }  
    
-   function createNavbarElement(navName, navURL) {
-    
-    if (navURL.endsWith('/new') ) {
+   function createNavbarElement(navName, navURL, notifs) {
+
+    if (isImage(navName)){
+      return h('li',
+        h("a", { href: navURL },
+          h("img.e4-button-image", {src: navName})));
+    }
+     
+    if (notifs > 0){
       return h('li', [h('a', { href: navURL }, navName),
       h("div.notification-bubble", {}, totalNew)]);
-    }
-    if (navURL.endsWith('/unread') ) { 
-      return h('li', [h('a', { href: navURL }, navName),
-      h("div.notification-bubble", {}, totalUnread)]);
-    }
-
-     if (isImage(navName)){
-       return h('li',
-         h("a", { href: navURL },
-           h("img.e4-button-image", {src: navName})));
-     }
-     
+  
+    } else {
      return h('li', h('a', { href: navURL }, navName));
-     }
+    }
+   }
    
    api.createWidget("e4-navbar", {
      tagName: "div.e4-container.e4-button",
@@ -55,9 +49,16 @@
   
        for (let i = 0; i < names.length; i++) {
        
+        var notifs = 0 
+        if (navURL.endsWith('/new') ) {
+          notifs=attrs.new;
+        }
+        if (navURL.endsWith('/unread') ) { 
+          notifs=attrs.unread;
+        }
+
          if (url[i].endsWith('/admin') && !is_admin) { continue; }
-       
-         contents.push(createNavbarElement(names[i], url[i]))
+         contents.push(createNavbarElement(names[i], url[i], notifs))
 
        }
        return h('ul', {}, contents);
@@ -65,5 +66,13 @@
    });
 </script>
 <script type="text/x-handlebars" data-template-name="/connectors/above-main-container/navbar">
-  {{mount-widget widget="e4-navbar"}}
+
+  var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
+
+  var totalUnread = topicTrackingState.countUnread();
+  var totalNew = topicTrackingState.countNew();
+
+  arguments = {"unread" : totalUnread, "new" : totalNew}
+
+  {{mount-widget widget="e4-navbar", args=arguments}}
 </script>
