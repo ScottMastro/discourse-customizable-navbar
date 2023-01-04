@@ -43,13 +43,12 @@
    
       var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
       var pmTopicTrackingState = Discourse.__container__.lookup('service:pm-topic-tracking-state');
+      console.log("WAOOOO2");
 
       topicTrackingState.onStateChange(() => {
         this.scheduleRerender();
        });
        
-       console.log("WAOOOO2");
-
        pmTopicTrackingState.onStateChange("pm-tracking-key", () => {
         this.scheduleRerender();
        });
