@@ -42,10 +42,14 @@
    }
    
       var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
-   
+      var pmTopicTrackingState = Discourse.__container__.lookup('pm-topic-tracking-state:main');
       topicTrackingState.onStateChange(() => {
         this.scheduleRerender();
-       });  
+       });
+       pmTopicTrackingState.onStateChange(() => {
+        console.log("WAOOOO")
+        this.scheduleRerender();
+       });       
 
        const contents = [];
 
