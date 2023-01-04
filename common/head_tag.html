@@ -41,11 +41,9 @@
      return h('li', h('a', { href: navURL }, navName));
    }
    
-  
       var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
    
       topicTrackingState.onStateChange(() => {
-        console.log("whoaa");
         this.scheduleRerender();
        });  
 
