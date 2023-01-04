@@ -56,9 +56,12 @@
         var notif = 0;
         if (url[i].endsWith('/new') ) {  notif = topicTrackingState.countNew(); }
         if (url[i].endsWith('/unread') ) { notif = topicTrackingState.countUnread(); }
+        if (url[i].endsWith('/messages') ) { 
+          notif = Discourse.User.current().new_personal_messages_notifications_count; }
 
-         if (url[i].endsWith('/admin') && !is_admin) { continue; }
-         contents.push(createNavbarElement(names[i], url[i], notif))
+
+        if (url[i].endsWith('/admin') && !is_admin) { continue; }
+        contents.push(createNavbarElement(names[i], url[i], notif))
 
        }
        return h('ul', {}, contents);
