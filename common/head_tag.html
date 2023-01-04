@@ -43,7 +43,6 @@
    
       var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
       var pmTopicTrackingState = Discourse.__container__.lookup('service:pm-topic-tracking-state');
-      console.log(pmTopicTrackingState.currentUser.new_personal_messages_notifications_count);
 
       topicTrackingState.onStateChange(() => {
         this.scheduleRerender();
@@ -61,8 +60,7 @@
         if (url[i].endsWith('/new') ) {  notif = topicTrackingState.countNew(); }
         if (url[i].endsWith('/unread') ) { notif = topicTrackingState.countUnread(); }
         if (url[i].endsWith('/messages') ) { 
-          notif = Discourse.User.current().new_personal_messages_notifications_count; }
-
+          notif = pmTopicTrackingState.currentUser.new_personal_messages_notifications_count; }
 
         if (url[i].endsWith('/admin') && !is_admin) { continue; }
         contents.push(createNavbarElement(names[i], url[i], notif))
