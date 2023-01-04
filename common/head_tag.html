@@ -52,15 +52,23 @@
         this.scheduleRerender();
        });
 
+       api.onPageChange(() => {
+        this.scheduleRerender();
+       });
+
        const contents = [];
 
        for (let i = 0; i < names.length; i++) {
        
         var notif = 0;
+        if (pmTopicTrackingState.currentUser.id != 1){
+        
         if (url[i].endsWith('/new') ) {  notif = topicTrackingState.countNew(); }
         if (url[i].endsWith('/unread') ) { notif = topicTrackingState.countUnread(); }
         if (url[i].endsWith('/messages') ) { 
           notif = pmTopicTrackingState.currentUser.new_personal_messages_notifications_count; }
+
+        }
 
         if (url[i].endsWith('/admin') && !is_admin) { continue; }
         contents.push(createNavbarElement(names[i], url[i], notif))
