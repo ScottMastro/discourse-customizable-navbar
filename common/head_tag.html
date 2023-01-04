@@ -47,9 +47,9 @@
       topicTrackingState.onStateChange(() => {
         this.scheduleRerender();
        });
-
+       
        pmTopicTrackingState.onStateChange(() => {
-        console.log("WAOOOO");
+        this.scheduleRerender();
        });       
 
        const contents = [];
