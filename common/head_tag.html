@@ -20,7 +20,9 @@
    var is_admin = false;
    
    try {
-     is_admin = Discourse.User.current().admin;
+     if (Discourse.User.current() != null){
+       is_admin = Discourse.User.current().admin;
+     }
    } catch (error) {
      console.error(error);
    }
