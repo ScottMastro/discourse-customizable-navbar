@@ -60,14 +60,15 @@
 
        for (let i = 0; i < names.length; i++) {
        
+        var current_user = Discourse.User.current()
         var notif = 0;
         // @stagecoach exception!!
-        if (pmTopicTrackingState.currentUser.id != 7866){
+        if (current_user != null && current_user.id != 7866){
         
         if (url[i].endsWith('/new') ) {  notif = topicTrackingState.countNew(); }
         if (url[i].endsWith('/unread') ) { notif = topicTrackingState.countUnread(); }
         if (url[i].endsWith('/messages') ) { 
-          notif = pmTopicTrackingState.currentUser.new_personal_messages_notifications_count; }
+          notif = current_user.new_personal_messages_notifications_count; }
 
         }
 
