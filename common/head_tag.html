@@ -20,6 +20,7 @@
    var is_admin = false;
    
    try {
+     console.log(api.getCurrentUser());
      if (Discourse.User.current() != null){
        is_admin = Discourse.User.current().admin;
      }
