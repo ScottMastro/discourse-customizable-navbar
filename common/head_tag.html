@@ -19,13 +19,8 @@
    var url = strURL.split('|');
    var is_admin = false;
    
-   try {
-     console.log(api.getCurrentUser());
-     if (Discourse.User.current() != null){
-       is_admin = Discourse.User.current().admin;
-     }
-   } catch (error) {
-     console.error(error);
+   if (api.getCurrentUser() != null){
+     is_admin = api.getCurrentUser().admin;
    }
    
    function createNavbarElement(navName, navURL, notif) {
@@ -63,7 +58,7 @@
 
        for (let i = 0; i < names.length; i++) {
        
-        var current_user = Discourse.User.current()
+        var current_user = api.getCurrentUser();
         var notif = 0;
         // @stagecoach exception!!
         if (current_user != null && current_user.id != 7866){
