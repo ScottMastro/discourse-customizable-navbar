@@ -24,7 +24,12 @@
      is_admin = api.getCurrentUser().admin;
    }
    else{
+         names.push("about");
+         names.push("rules");
          names.push("login");
+
+         names.push("/about");
+         url.push("/rules");
          url.push("/login");
    }
 
