@@ -5,6 +5,13 @@
 
     html() {
 
+   var is_admin = false;
+   
+   if (api.getCurrentUser() != null){
+     is_admin = api.getCurrentUser().admin;
+   }
+   if (current_user == null) { return; }
+
   const h = require("virtual-dom").h; 
 
 
@@ -17,12 +24,6 @@
 
    var names = strName.split('|');
    var url = strURL.split('|');
-   var is_admin = false;
-   
-   if (api.getCurrentUser() != null){
-     is_admin = api.getCurrentUser().admin;
-   }
-   if (current_user == null) { return; }
 
    function createNavbarElement(navName, navURL, notif) {
 
