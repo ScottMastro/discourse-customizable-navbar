@@ -59,9 +59,9 @@
        for (let i = 0; i < names.length; i++) {
        
         var current_user = api.getCurrentUser();
-        if(current_user == null){
-          console.log("not logged in")
-        }
+        
+        if (url[i].endsWith('/new') && current_user == null) { continue; }
+
         
         var notif = 0;
         // @stagecoach exception!!
@@ -73,6 +73,8 @@
           notif = current_user.new_personal_messages_notifications_count; }
 
         }
+        
+
 
         if (url[i].endsWith('/admin') && !is_admin) { continue; }
         contents.push(createNavbarElement(names[i], url[i], notif))
