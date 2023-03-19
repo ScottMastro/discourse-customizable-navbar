@@ -5,13 +5,6 @@
 
     html() {
 
-   var is_admin = false;
-   
-   if (api.getCurrentUser() != null){
-     is_admin = api.getCurrentUser().admin;
-   }
-   if (current_user == null) { return; }
-
   const h = require("virtual-dom").h; 
 
 
@@ -24,6 +17,12 @@
 
    var names = strName.split('|');
    var url = strURL.split('|');
+
+   var is_admin = false;
+   
+   if (api.getCurrentUser() != null){
+     is_admin = api.getCurrentUser().admin;
+   }
 
    function createNavbarElement(navName, navURL, notif) {
 
@@ -66,6 +65,7 @@
         if (url[i].endsWith('/unread') && current_user == null) { continue; }
         if (url[i].endsWith('/posted') && current_user == null) { continue; }
         if (url[i].endsWith('/messages') && current_user == null) { continue; }
+        if (url[i].endsWith('/discord') && current_user == null) { continue; }
 
         
         var notif = 0;
