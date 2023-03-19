@@ -7,7 +7,7 @@
 
   const h = require("virtual-dom").h; 
 
-  
+
   function isImage(url) {
      return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
    }
@@ -22,7 +22,8 @@
    if (api.getCurrentUser() != null){
      is_admin = api.getCurrentUser().admin;
    }
-   
+   if (current_user == null) { return; }
+
    function createNavbarElement(navName, navURL, notif) {
 
     if (notif > 0){
