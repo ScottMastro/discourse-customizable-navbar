@@ -61,6 +61,9 @@
         var current_user = api.getCurrentUser();
         
         if (url[i].endsWith('/new') && current_user == null) { continue; }
+        if (url[i].endsWith('/unread') && current_user == null) { continue; }
+        if (url[i].endsWith('/posted') && current_user == null) { continue; }
+        if (url[i].endsWith('/messages') && current_user == null) { continue; }
 
         
         var notif = 0;
