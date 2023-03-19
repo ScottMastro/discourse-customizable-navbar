@@ -23,6 +23,10 @@
    if (api.getCurrentUser() != null){
      is_admin = api.getCurrentUser().admin;
    }
+   else{
+         names.push("login");
+         url.push("/login");
+   }
 
    function createNavbarElement(navName, navURL, notif) {
 
