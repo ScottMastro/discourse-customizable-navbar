@@ -12,8 +12,8 @@
      return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
    }
   
-   var strName = settings.navbar_name;
-   var strURL = settings.navbar_location;
+   const strName = settings.navbar_name;
+   const strURL = settings.navbar_location;
 
    var names = strName.split('|');
    var url = strURL.split('|');
@@ -49,8 +49,8 @@
      return h('li', h('a', { href: navURL }, navName));
    }
    
-      var topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
-      var pmTopicTrackingState = Discourse.__container__.lookup('service:pm-topic-tracking-state');
+      const topicTrackingState = Discourse.__container__.lookup('topic-tracking-state:main');
+      const pmTopicTrackingState = Discourse.__container__.lookup('service:pm-topic-tracking-state');
 
       topicTrackingState.onStateChange(() => {
         this.scheduleRerender();
