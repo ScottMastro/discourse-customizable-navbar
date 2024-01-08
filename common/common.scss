@@ -72,3 +72,31 @@
   line-height: var(--line-height-small);
   z-index: 1;
 }
+
+
+.e4-container {
+  background-color: var(--secondary);
+  border: 0px !important;
+  border-radius: 10px;
+  box-shadow: 0 24px 40px rgba(0,0,0,0.07),0 10.8529px 24.1177px rgba(0,0,0,0.0456112),0 4.50776px 10.0172px rgba(0,0,0,0.035),0 1.63037px 3.62304px rgba(0,0,0,0.0243888);
+  
+}
+
+.e4-button {
+  > ul { 
+  > li {
+    > a {
+      background-color: var(--secondary-very-high);
+      color: var(--tertiary);
+      border: 0px !important;
+      border-radius: 10px;
+      text-transform: uppercase;
+
+      &:hover {
+        color: var(--tertiary) !important;
+        background-color: var(--highlight) !important;
+      }
+    }
+  }
+  }
+}
