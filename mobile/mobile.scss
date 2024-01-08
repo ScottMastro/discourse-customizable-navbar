@@ -1,4 +1,12 @@
 .e4-button {
+  > ul { 
+  > li {
+    > a {
+      font-size: small !important;
+    }
+    }
+  }
+  
   >li{
       margin-right: 0.1em !important;
       margin-left: 0.1em !important;
