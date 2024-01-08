@@ -1,12 +1,12 @@
 <script type="text/discourse-plugin" version="0.8">
+  const { h } = require('virtual-dom');
 
   api.createWidget("e4-navbar", {
     tagName: "div.e4-container.e4-button",
 
     html() {
 
-  const h = require("virtual-dom").h; 
-
+  //const h = require("virtual-dom").h; 
 
   function isImage(url) {
      return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
@@ -98,7 +98,7 @@
      }
    });
 </script>
+
 <script type="text/x-handlebars" data-template-name="/connectors/above-main-container/navbar">
-  
   {{mount-widget widget="e4-navbar"}}
 </script>
