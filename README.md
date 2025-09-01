@@ -1,4 +1,4 @@
-# Discourse Navigation Bar Component
+# Discourse Customizable Navbar - Theme Component
 
 Places a a navigation bar below the header.
 
