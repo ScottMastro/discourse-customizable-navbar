@@ -3,4 +3,5 @@
 Places a a navigation bar below the header.
 
 Example with custom css:
-![example](example.png)
+
+![example](img/example.png)
