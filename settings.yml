@@ -7,3 +7,8 @@ navbar_location:
   default: "/categories|/latest|/search|/u"
   type: list
   description: URLs for navigation bar 
+
+show_when_anon:
+  default: true
+  type: bool
+  description: whether to show the navbar when the user is not logged in

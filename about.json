@@ -1,8 +1,8 @@
 {
-  "name": "discourse-navbar",
+  "name": "Discourse Customizable Navbar",
+  "about_url": "https://github.com/ScottMastro/discourse-customizable-navbar",
+  "license_url": "https://github.com/ScottMastro/discourse-customizable-navbar/blob/master/LICENSE",
   "component": true,
-  "license_url": null,
-  "about_url": "https://github.com/ScottMastro/discourse-navbar",
   "authors": "ScottMastro",
-  "theme_version": "1.1"
+  "theme_version": "1.2"
 }

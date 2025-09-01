@@ -1,14 +1,8 @@
-.e4-container{
+#customizable-navbar {
   margin-bottom: 1em !important;
 }
 
-.e4-button {
-  > ul {
-    > li {
-      > a {
-        font-size: small !important;
-        padding: 4px !important;
-      }
-    }
-  }
+.customizable-navbar-button {
+  font-size: small !important;
+  padding: 4px !important;
 }
