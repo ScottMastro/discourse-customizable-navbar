@@ -1,2 +1,6 @@
-# E4 Discourse Component - navigation bar
-Places the a navigation bar below the header.
+# Discourse Navigation Bar Component
+
+Places a a navigation bar below the header.
+
+Example with custom css:
+![example](example.png)
